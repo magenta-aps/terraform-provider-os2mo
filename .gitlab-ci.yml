@@ -19,6 +19,9 @@ stages:
 .if-tag: &if-tag
   if: '$CI_COMMIT_TAG'
 
+.if-tag-semver: &if-tag-semver
+  if: '$CI_COMMIT_TAG =~ /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/'
+
 .if-merge-request: &if-merge-request
   if: '$CI_MERGE_REQUEST_IID'
 
@@ -34,10 +37,9 @@ workflow:
 
 include:
   - project: labs/salt-automation
-    ref: feature/51567_support_cc_overrides
     file:
       - gitlab-ci-templates/common/no-interrupt.v1.yml
-      - gitlab-ci-templates/common/conventional-commits-meta.v1.yml
+      - gitlab-ci-templates/common/conventional-commits.v1.yml
       - gitlab-ci-templates/common/pre-commit.v1.yml
 
 
@@ -50,22 +52,15 @@ Build:
     - go build .
     - go vet .
 
-lint:commits:
-  extends: .lint:commits
 
-release:semantic-commit:
-  extends: .release:semantic-commit
+Release:
+  stage: release
+  image:
+    name: goreleaser/goreleaser
+    entrypoint: ['']
   variables:
-    GORELEASER_VERSION: 1.13.1
-    GORELEASER_FILE: goreleaser_${GORELEASER_VERSION}_x86_64.apk
-    GORELEASER_RELEASE_PAGE: https://github.com/goreleaser/goreleaser/releases/
-    # yamllint disable-line rule:line-length
-    GORELEASER_URL: ${GORELEASER_RELEASE_PAGE}/download/v${GORELEASER_VERSION}/${GORELEASER_FILE}
-  before_script:
-    - wget ${GORELEASER_URL}
-    - apk add --allow-untrusted ${GORELEASER_FILE}
-    - apk add go
-    - npm install @semantic-release/exec
-
-release:generate-changelog:
-  extends: .release:generate-changelog
+    GIT_DEPTH: 0
+  script:
+    - goreleaser release --rm-dist
+  rules:
+    - <<: *if-tag-semver
