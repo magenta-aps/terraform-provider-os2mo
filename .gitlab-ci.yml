@@ -58,10 +58,12 @@ Release:
   image:
     name: goreleaser/goreleaser
     entrypoint: ['']
-  variables:
-    GIT_DEPTH: 0
+  before_script:
+    - apk add gpg-agent
+    - cat "${GPG_PRIVATE_KEY}" > private.gpg
+    - gpg2 --import private.gpg
+    - export GPG_FINGERPRINT=$(gpg --with-colons --fingerprint | awk -F: '$1 == "fpr" {print $10;}' | head -1)
   script:
-    # TODO: GPG_PRIVATE_KEY
     - goreleaser release --rm-dist
   rules:
     - <<: *if-tag-semver
