@@ -2,7 +2,7 @@
 
 [![registry.terraform.io](https://img.shields.io/badge/terraform-docs-success)](https://registry.terraform.io/providers/magenta-aps/os2mo/latest/docs)
 
-Lifecycle management of OS2mo entities using the GraphQL API.
+Lifecycle management of OS2mo entities.
 Maintained by Magenta ApS.
 
 This provider enables management of OS2mo entities.
