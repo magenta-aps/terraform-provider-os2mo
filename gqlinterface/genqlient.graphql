@@ -1,0 +1,25 @@
+fragment ITSystemFields on ITSystem {
+  name
+  system_type
+  type
+  user_key
+  uuid
+}
+
+query getITSystemByUUID($uuid: UUID!) {
+  itsystems(uuids: [$uuid]) {
+    ...ITSystemFields
+  }
+}
+
+query getITSystemByUserKey($user_key: String!) {
+  itsystems(user_keys: [$user_key]) {
+    ...ITSystemFields
+  }
+}
+
+query getITSystems {
+  itsystems {
+    ...ITSystemFields
+  }
+}
