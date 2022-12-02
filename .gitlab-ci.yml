@@ -61,6 +61,7 @@ Release:
   variables:
     GIT_DEPTH: 0
   script:
+    # TODO: GPG_PRIVATE_KEY
     - goreleaser release --rm-dist
   rules:
     - <<: *if-tag-semver
