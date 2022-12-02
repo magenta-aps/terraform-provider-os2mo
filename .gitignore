@@ -1,8 +1,17 @@
 # SPDX-FileCopyrightText: Magenta ApS
 # SPDX-License-Identifier: MPL-2.0
-.cache
 
+# Binary output file
 terraform-provider-os2mo
 
+# Example temporary files
 examples/.terraform.lock.hcl
 examples/.terraform/
+
+# CI temporary files
+.cache
+CHANGELOG.md
+goreleaser_1.13.1_x86_64.apk
+node_modules/
+package-lock.json
+package.json
