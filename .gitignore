@@ -10,8 +10,3 @@ examples/.terraform/
 
 # CI temporary files
 .cache
-CHANGELOG.md
-goreleaser_1.13.1_x86_64.apk
-node_modules/
-package-lock.json
-package.json
