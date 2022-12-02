@@ -64,6 +64,7 @@ release:semantic-commit:
   before_script:
     - wget ${GORELEASER_URL}
     - apk add --allow-untrusted ${GORELEASER_FILE}
+    - apk add go
     - npm install @semantic-release/exec
 
 release:generate-changelog:
