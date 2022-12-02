@@ -1,3 +1,6 @@
+---
+# SPDX-FileCopyrightText: Magenta ApS
+# SPDX-License-Identifier: MPL-2.0
 # Default genqlient config; for full documentation see:
 # https://github.com/Khan/genqlient/blob/main/docs/genqlient.yaml
 schema: schema.graphql

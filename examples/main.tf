@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Magenta ApS
+# SPDX-License-Identifier: MPL-2.0
 terraform {
   required_providers {
     os2mo = {

@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Magenta ApS
+# SPDX-License-Identifier: MPL-2.0
 TEST?=$$(go list ./... | grep -v 'vendor')
 HOSTNAME=github.com
 NAMESPACE=Skeen

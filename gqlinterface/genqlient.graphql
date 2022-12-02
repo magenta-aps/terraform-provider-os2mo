@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Magenta ApS
+# SPDX-License-Identifier: MPL-2.0
+
 fragment ITSystemFields on ITSystem {
   name
   system_type

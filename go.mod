@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: Magenta ApS
+// SPDX-License-Identifier: MPL-2.0
 module terraform-provider-os2mo
 
 go 1.18
