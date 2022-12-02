@@ -1,10 +1,6 @@
 # SPDX-FileCopyrightText: Magenta ApS
 #
 # SPDX-License-Identifier: MPL-2.0
-default:
-  # All jobs are interruptible by default
-  interruptible: true
-
 stages:
   - sync
   - lint
