@@ -34,7 +34,36 @@ workflow:
 
 include:
   - project: labs/salt-automation
+    ref: feature/51567_support_cc_overrides
     file:
       - gitlab-ci-templates/common/no-interrupt.v1.yml
-      - gitlab-ci-templates/common/conventional-commits.v1.yml
+      - gitlab-ci-templates/common/conventional-commits-meta.v1.yml
       - gitlab-ci-templates/common/pre-commit.v1.yml
+
+
+Build:
+  stage: build
+  needs: []
+  image: golang:1.18
+  script:
+    - go version
+    - go build .
+    - go vet .
+
+lint:commits:
+  extends: .lint:commits
+
+release:semantic-commit:
+  extends: .release:semantic-commit
+  variables:
+    GORELEASER_VERSION: 1.13.1
+    GORELEASER_FILE: goreleaser_${GORELEASER_VERSION}_x86_64.apk
+    GORELEASER_RELEASE_PAGE: https://github.com/goreleaser/goreleaser/releases/
+    GORELEASER_URL: ${GORELEASER_RELEASE_PAGE}/download/v${GORELEASER_VERSION}/${GORELEASER_FILE}
+  before_script:
+    - wget ${GORELEASER_URL}
+    - apk add --allow-untrusted ${GORELEASER_FILE}
+    - npm install @semantic-release/exec
+
+release:generate-changelog:
+  extends: .release:generate-changelog

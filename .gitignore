@@ -1,3 +1,8 @@
 # SPDX-FileCopyrightText: Magenta ApS
 # SPDX-License-Identifier: MPL-2.0
 .cache
+
+terraform-provider-os2mo
+
+examples/.terraform.lock.hcl
+examples/.terraform/

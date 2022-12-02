@@ -12,3 +12,8 @@ plugins:
     - assets:
         - path: CHANGELOG.md
           label: Changelog
+  - - "@semantic-release/exec"
+    - publishCmd: |
+        # TODO: Build?
+        # TODO: GPG_PRIVATE_KEY
+        goreleaser release --rm-dist
