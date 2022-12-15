@@ -26,3 +26,21 @@ query getITSystems {
     ...ITSystemFields
   }
 }
+
+mutation createITSystem($input: ITSystemCreateInput!) {
+  itsystem_create(input: $input) {
+    uuid
+  }
+}
+
+mutation updateITSystem($uuid: UUID!, $input: ITSystemCreateInput!) {
+  itsystem_update(uuid: $uuid, input: $input) {
+    uuid
+  }
+}
+
+mutation deleteITSystem($uuid: UUID!) {
+  itsystem_delete(uuid: $uuid) {
+    uuid
+  }
+}
