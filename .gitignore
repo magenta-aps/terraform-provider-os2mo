@@ -8,5 +8,8 @@ terraform-provider-os2mo
 examples/.terraform.lock.hcl
 examples/.terraform/
 
+# Example generated files
+os2mo/generated.go
+
 # CI temporary files
 .cache

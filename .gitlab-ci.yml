@@ -37,11 +37,11 @@ include:
       - gitlab-ci-templates/common/pre-commit.v1.yml
 
 
-Build:
-  stage: build
-  needs: []
-  image: golang:1.18
-  script:
-    - go version
-    - go build .
-    - go vet .
+# Build:
+#   stage: build
+#   needs: []
+#   image: golang:1.18
+#   script:
+#     - go version
+#     - go build .
+#     - go vet .
